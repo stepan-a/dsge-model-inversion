@@ -32,13 +32,12 @@ var e_pi = 0.004;
 var e_i  = 0.001;
 end;
 
+% TO BE FIXED IN DYNARE Following statement should not be necessary.
 stoch_simul(periods=10,irf=0,noprint,order=1);
 
 subsample = 1Y:100Y;
 
 SimulatedData = dseries('truedata.mat');
-
-initialcondition = dseries(zeros(1,6), '1Y', {'y', 'pi', 'i', 'e_y', 'e_pi', 'e_i'});
 
 fplan = init_plan(subsample);
 fplan = flip_plan(fplan, 'y', 'e_y', 'surprise', subsample, transpose(SimulatedData.y(subsample).data));
@@ -47,30 +46,30 @@ fplan = flip_plan(fplan, 'i', 'e_i', 'surprise', subsample, transpose(SimulatedD
 
 options_.simul.maxit = 20;
 
-f = det_cond_forecast(fplan); %, initialcondition, subsample);
+f = det_cond_forecast(fplan);
 
 figure(1)
-plot(f.y-SimulatedData.y)
+plot(f.y-SimulatedData.y) % Should be zero
 title('y')
 
 figure(2)
-plot(f.pi-SimulatedData.pi)
+plot(f.pi-SimulatedData.pi) % Should be zero
 title('pi')
 
 figure(3)
-plot(f.i-SimulatedData.i)
+plot(f.i-SimulatedData.i) % Should be zero
 title('i')
 
 figure(4)
-plot(f.e_y-SimulatedData.e_y)
+plot(f.e_y-SimulatedData.e_y) % Not zero because of the misspecification related to the ZLB
 title('e_y')
 
 figure(5)
-plot(f.e_pi-SimulatedData.e_pi)
+plot(f.e_pi-SimulatedData.e_pi) % Not zero because of the misspecification related to the ZLB
 title('e_pi')
 
 figure(6)
-plot(f.e_i-SimulatedData.e_i)
+plot(f.e_i-SimulatedData.e_i) % Not zero because of the misspecification related to the ZLB
 title('e_i')
 hold on
 plot(SimulatedData.i(subsample),'or')
