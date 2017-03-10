@@ -6,3 +6,5 @@
 *.eps
 *.bin
 *.cod
+example/invert/*
+example/simulate/*
