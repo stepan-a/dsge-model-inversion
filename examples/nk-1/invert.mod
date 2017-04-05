@@ -103,6 +103,6 @@ figure(3)
 plot(exogenousvariables.e_i-SimulatedData.e_i) % Not zero because of the misspecification related to the ZLB
 title('e_i')
 hold on
-id = find(f.i.data==-.05);
+id = find(endogenousvariables.i.data==-.05);
 plot(id, zeros(1,length(id)), 'or')
 hold off
