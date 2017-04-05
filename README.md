@@ -1,1 +1,1 @@
-Provides an example showing how to invert a model, ie how to identify the shocks and/or errors that alllow to match a set of endogenous variables, using an extended path approach.
+Provides an example showing how to invert a model, ie how to identify the shocks and/or errors that allow to match a set of endogenous variables, using an extended path approach. Because the inversion is done with the extended path algorithm, the full deterministic nonlinearity of the model is taken into account.
