@@ -66,7 +66,7 @@ exogenousvariables = dseries(NaN(99, 3), 2Y, {'e_y';'e_pi';'e_i'});
 */
 
 // Invert the model by calling the model_inversion routine.
-[endogenousvariables, exogenousvariables] = model_inversion(constrainedpaths, exogenousvariables, SimulatedData, M_);
+[endogenousvariables, exogenousvariables] = model_inversion(constrainedpaths, exogenousvariables, SimulatedData, M_, options_, oo_);
 
 /* REMARKS
 **

@@ -66,7 +66,7 @@ exogenousvariables = dseries(exodata, 1Y, {'e_y';'e_pi';'e_i'});
 */
 
 // Invert the model by calling the model_inversion routine.
-[endogenousvariables, exogenousvariables] = model_inversion(constrainedpaths, exogenousvariables, SimulatedData, M_);
+[endogenousvariables, exogenousvariables] = model_inversion(constrainedpaths, exogenousvariables, SimulatedData, M_, options_, oo_);
 
 // Check the path for the nominal interest rate
 if max(abs(endogenousvariables.i(subsample).data-SimulatedData.i(subsample).data))>1e-6
