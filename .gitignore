@@ -6,5 +6,9 @@
 *.eps
 *.bin
 *.cod
-example/invert/*
-example/simulate/*
+examples/nk-1/invert/*
+examples/nk-1/simulate/*
+examples/nk-2/invert/*
+examples/nk-2/simulate/*
+examples/bk-1/solow_ces/*
+examples/bk-2/solow_ces/*
