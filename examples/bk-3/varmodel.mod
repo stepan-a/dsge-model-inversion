@@ -76,7 +76,7 @@ SimulatedData = [dseries(TrueData.endo_simul', 1Y, cellstr(M_.endo_names)), dser
 constrainedpaths = SimulatedData{'y1'}(subsample);
 
 // Set the instruments (innovations used to control the paths for the endogenous variables).
-exogenousvariables = dseries([TrueData.exo_simul(1:100,1:2) NaN(100, 1)], 1Y, {'e1';'e2';'e3'});
+exogenousvariables = dseries([NaN(100, 1) TrueData.exo_simul(1:100,2:3) ], 1Y, {'e1';'e2';'e3'});
 
 
 // Invert the model by calling the model_inversion routine.
@@ -87,24 +87,25 @@ if max(abs(constrainedpaths.y1.data(1:99)-endogenousvariables.y1.data(2:100)))>1
    error('Constraint on y1 path is not satisfied!')
 end
 
-if max(abs(exogenousvariables(2Y:100Y).e1.data-SimulatedData(2Y:100Y).e1.data))>1e-12
+if max(abs(exogenousvariables(2Y:100Y).e2.data-SimulatedData(2Y:100Y).e2.data))>1e-12
    error('Constraint on e1 path is not satisfied!')
 end
 
-if max(abs(exogenousvariables(2Y:100Y).e2.data-SimulatedData(2Y:100Y).e2.data))>1e-12
+if max(abs(exogenousvariables(2Y:100Y).e3.data-SimulatedData(2Y:100Y).e3.data))>1e-12
    error('Constraint on e2 path is not satisfied!')
 end
 
 // Check consistency of the results.
-if max(abs(exogenousvariables(2Y:100Y).e3.data-SimulatedData(2Y:100Y).e3.data))>1e-12
-   error('Model inversion is not consistent with true innovations (e3)')
-end
-
 if max(abs(SimulatedData(2Y:100Y).y2.data-endogenousvariables(2Y:100Y).y2.data))>1e-12
-   error('Model inversion is not consistent with respect to y2')
+  error('Model inversion is not consistent with respect to y2')
 end
 
 if max(abs(SimulatedData(2Y:100Y).y3.data-endogenousvariables(2Y:100Y).y3.data))>1e-12
    error('Model inversion is not consistent with respect to y3')
 end
+
+if max(abs(exogenousvariables(2Y:100Y).e1.data-SimulatedData(2Y:100Y).e1.data))>1e-12
+   error('Model inversion is not consistent with true innovations (e3)')
+end
+
 
