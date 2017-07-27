@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 
 rm -rf solow_ces
 rm -f *.m *.mat *.log
