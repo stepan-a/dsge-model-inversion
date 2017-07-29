@@ -88,7 +88,7 @@ exogenousvariables = dseries([NaN(100, 1), TrueData.exo_simul(1:100,2)], 1Y, cel
 [endogenousvariables, exogenousvariables] = model_inversion(constrainedpaths, exogenousvariables, SimulatedData, M_, options_, oo_);
 
 // Check that all the constraints are satisfied.
-if max(abs(constrainedpaths.Output.data(1:99)-endogenousvariables.Output.data(2:100)))>1e-12
+if max(abs(constrainedpaths.Output(subsample).data-endogenousvariables.Output(subsample).data))>1e-12
    error('Constraint on Output path is not satisfied!')
 end
 

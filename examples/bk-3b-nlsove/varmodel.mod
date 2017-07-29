@@ -46,7 +46,7 @@ b22 =  .20;
 b23 = -.05;
 b33 =  .10;
 
-model(linear);
+model;
     y1 = a11*y1(-1) + a12*y2(-1) + a13*y3(-1) + b11*e1 + b12*e2 + b13*e3 ;
     y2 = a21*y1(-1) + a22*y2(-1) + a23*y3(-1)          + b22*e2 + b23*e3 ;
     y3 = a31*y1(-1) + a32*y2(-1) + a33*y3(-1)                   + b33*e3 ;
@@ -111,3 +111,5 @@ end
 if max(abs(exogenousvariables(subsample).e1.data-SimulatedData(subsample).e1.data))>1e-12
    error('Model inversion is not consistent with true innovations (e3)')
 end
+
+

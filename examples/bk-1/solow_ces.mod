@@ -87,11 +87,11 @@ exogenousvariables = dseries(NaN(100, 2), 1Y, {'e_x';'e_n'});
 [endogenousvariables, exogenousvariables] = model_inversion(constrainedpaths, exogenousvariables, SimulatedData, M_, options_, oo_);
 
 // Check that all the constraints are satisfied.
-if max(abs(constrainedpaths.Output.data(1:99)-endogenousvariables.Output.data(2:100)))>1e-12
+if max(abs(constrainedpaths.Output(subsample).data-endogenousvariables.Output(subsample).data))>1e-12
    error('Constraint on Output path is not satisfied!')
 end
 
-if max(abs(constrainedpaths.PhysicalCapitalStock.data(1:99)-endogenousvariables.PhysicalCapitalStock.data(2:100)))>1e-12
+if max(abs(constrainedpaths.PhysicalCapitalStock(subsample).data-endogenousvariables.PhysicalCapitalStock(subsample).data))>1e-12
    error('Constraint on PhysicalCapitalStock path is not satisfied!')
 end
 
@@ -111,6 +111,6 @@ TruePopulation = dseries(TrueData.endo_simul(3,:)', 1Y, 'Population');
 TrueEfficiencyTimesPopulation = TrueEfficiency*TruePopulation;
 EfficiencyTimesPopulation = endogenousvariables.Efficiency*endogenousvariables.Population;
 
-if max(abs(TrueEfficiencyTimesPopulation(1Y:100Y).data-EfficiencyTimesPopulation(1Y:100Y).data))>1e-5
+if max(abs(TrueEfficiencyTimesPopulation(2Y:100Y).data-EfficiencyTimesPopulation(2Y:100Y).data))>1e-5
    error('Model inversion is not consitent with true innovations.')
 end

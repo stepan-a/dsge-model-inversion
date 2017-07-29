@@ -18,7 +18,7 @@ var y1 y2 y3 ;
 
 varexo e1 e2 e3 ;
 
-parameters a11 a12 a13 a21 a22 a23 a31 a32 a33 b11 b12 b13 b22 b23 b33 ;
+parameters a11 a12 a13 a21 a22 a23 a31 a32 a33 ;
 
 /*
 ** Simulate the elements of the first order autoregressive matrix (we impose stability of the model, note that
@@ -39,17 +39,11 @@ a23 = A(2,3);
 a31 = A(3,1);
 a32 = A(3,2);
 a33 = A(3,3);
-b11 =  .10;
-b12 = -.30;
-b13 =  .05;
-b22 =  .20;
-b23 = -.05;
-b33 =  .10;
 
-model(linear);
-    y1 = a11*y1(-1) + a12*y2(-1) + a13*y3(-1) + b11*e1 + b12*e2 + b13*e3 ;
-    y2 = a21*y1(-1) + a22*y2(-1) + a23*y3(-1)          + b22*e2 + b23*e3 ;
-    y3 = a31*y1(-1) + a32*y2(-1) + a33*y3(-1)                   + b33*e3 ;
+model;
+    y1 = a11*y1(-1) + a12*y2(-1) + a13*y3(-1) + e1 ;
+    y2 = a21*y1(-1) + a22*y2(-1) + a23*y3(-1) + e2 ;
+    y3 = a31*y1(-1) + a32*y2(-1) + a33*y3(-1) + e3 ;
 end;
 
 histval;
@@ -81,7 +75,6 @@ constrainedpaths = SimulatedData{'y1'}(subsample);
 
 // Set the instruments (innovations used to control the paths for the endogenous variables).
 exogenousvariables = dseries([NaN(100, 1) TrueData.exo_simul(1:100,2:3) ], 1Y, {'e1';'e2';'e3'});
-
 
 // Invert the model by calling the model_inversion routine.
 [endogenousvariables, exogenousvariables] = model_inversion(constrainedpaths, exogenousvariables, SimulatedData, M_, options_, oo_);
