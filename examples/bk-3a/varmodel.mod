@@ -18,7 +18,7 @@ var y1 y2 y3 ;
 
 varexo e1 e2 e3 ;
 
-parameters a11 a12 a13 a21 a22 a23 a31 a32 a33 b11 b12 b13 b22 b23 b33 ;
+parameters a11 a12 a13 a21 a22 a23 a31 a32 a33 ;
 
 /*
 ** Simulate the elements of the first order autoregressive matrix (we impose stability of the model, note that
