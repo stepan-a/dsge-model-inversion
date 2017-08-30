@@ -1,0 +1,3 @@
+[submodule "modules/matlab-subdir"]
+	path = modules/matlab-subdir
+	url = git@github.com:kakearney/subdir-pkg.git
