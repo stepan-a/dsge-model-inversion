@@ -1,3 +1,5 @@
+// --+ options: stochastic +--
+
 /* © 2017 Stéphane Adjemian <stephane.adjemian@univ-lemans.fr>
  *
  * This file is free software: you can redistribute it and/or modify
@@ -42,9 +44,9 @@ a32 = A(3,2);
 a33 = A(3,3);
 b11 = B(1,1);
 b12 = B(1,2);
-b13 = 0;//B(1,3);
+b13 = B(1,3);
 b22 = B(2,2);
-b23 = 0;//B(2,3);
+b23 = B(2,3);
 b33 = B(3,3);
 
 model(linear);

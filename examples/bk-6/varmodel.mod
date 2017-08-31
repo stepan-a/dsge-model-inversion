@@ -1,3 +1,5 @@
+// --+ options: stochastic +--
+
 /* © 2017 Stéphane Adjemian <stephane.adjemian@univ-lemans.fr>
  *
  * This file is free software: you can redistribute it and/or modify
