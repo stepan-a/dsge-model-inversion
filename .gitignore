@@ -12,3 +12,14 @@ examples/nk-2/invert/*
 examples/nk-2/simulate/*
 examples/bk-1/solow_ces/*
 examples/bk-2/solow_ces/*
+examples/bk-3a-nlsove/varmodel/*
+examples/bk-3a/varmodel/*
+examples/bk-3b-nlsove/varmodel/*
+examples/bk-3b/varmodel/*
+examples/bk-4-nlsolve/varmodel/*
+examples/bk-4/varmodel/*
+examples/bk-5-nlsolve/varmodel/*
+examples/bk-5/varmodel/*
+examples/bk-6/varmodel/*
+examples/bk-7/varmodel/*
+examples/bk-8/varmodel/*
